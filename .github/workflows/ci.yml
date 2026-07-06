@@ -1,0 +1,22 @@
+name: CI YOUGile
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+
+jobs:
+
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      - name: Create PR with YouGile checklist
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.ref_name }}
+        run: python3 -m app.create_pr
+
+     
