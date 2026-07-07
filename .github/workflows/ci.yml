@@ -18,5 +18,3 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           BRANCH: ${{ github.ref_name }}
         run: python3 -m app.create_pr
-
-     
